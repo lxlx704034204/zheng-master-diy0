@@ -3,19 +3,47 @@ img {vertical-align: middle;}
 a, a:hover, a:active, a:focus {text-decoration: none; -webkit-user-drag: none;}
 a i{font-size: 13px;}
 
-body{background:#ECECEC;}
-body:before{height:50%;width:100%;position:absolute;top:0;left:0;background:#29a176;content:"";z-index:0}
-#login-window{position:relative;top:50%;left:50%;width:300px;height:200px;margin-left:-150px;margin-top:-100px;padding:35px 55px 35px 25px;z-index:10;background:#fff;box-shadow:0 1px 11px rgba(0,0,0,.27);border-radius:2px;}
-.m-b-20{margin-bottom:20px !important;}
+body{background:#ECECEC;}/*最底层容器 背景色*/
+body:before{height:50%;width:100%;position:absolute;top:0;left:0;background:#29a176;content:"";z-index:0}/*次底层容器*/
+/*position : static absolute relative
+absolute : 　将对象从文档流中拖出，使用left，right，top，bottom等属性进行绝对定位。而其层叠通过css z-index属性定义。此时对             象不具有边距，但仍有补白和边框
+relative : 　对象不可层叠，但将依据left，right，top，bottom等属性在正常文档流中偏移位置
 
-#login-bt{position:absolute;width:50px;height:50px;border-radius:50%;line-height:36px!important;top:50%;margin-top:-25px;right:-25px;background:#FF4F0F;}
-#login-bt i{font-size:23px;color:#fff;}
+*/
+#login-window{position:relative;width:300px;height:200px;
+    top:50%;left:50%;
+    margin-left:-150px;margin-top:-100px;/*占用的外围的偏移量*/
+    padding:35px 55px 35px 25px;		 /*占用的内围的偏移量*/
+    background:#fff; z-index:10;/*z-index决定不能层级的容器覆盖的情况*/
+    box-shadow:0 1px 11px rgba(0,0,0,.27);/*{box-shadow[投影方式]: X轴偏移量 Y轴偏移量阴影模糊半径 阴影扩展半径 阴影颜色}*/
+    border-radius:2px;}/*容器4角圆角弧度量*/
 
-.input-group-addon{border:none;background:none;font-size:16px;}
-.form-control{position:relative;font-size:13px;border:1px solid #e0e0e0;border-left:0;border-right:0;border-top:0;padding:0;background:#fff;height:35px;line-height:35px;transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;box-shadow:none;}
+.m-b-20{margin-bottom:20px !important;}/*“账号”、“账号” 共用的div样式 */
+.input-group-addon{border:none;background:none;font-size:16px;}/*华丽的分割线*/
+.form-control{position:relative;font-size:13px;border:1px solid #e0e0e0;border-left:0;border-right:0;border-top:0;padding:0;background:#fff;height:35px;
+    line-height:35px;transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;box-shadow:none;}
 .form-control:active, .form-control:focus{box-shadow:none;}
+
+/* display:inline-block：设置为行内块元素
+           inline-block主要的用处是用来处理行内非替换元素的高宽问题的！
+			行内非替换元素：比如span、a等标签，正常情况下士不能设置宽高的，加上该属性之后，就可以触发让这类标签表现得如块级元素一样，可以设置宽高。
+						   vertical-align 属性设置元素的垂直对齐方式。*/
 .fg-line{position:relative;vertical-align:top;display:inline-block;width:100%;}
-.fg-line:after{position:absolute;z-index:3;bottom:0;left:0;height:2px;width:0;content:"";-webkit-transition:all;-o-transition:all;transition:all;-webkit-transition-duration:.3s;transition-duration:.3s;background:#29a176;}
-.fg-line.fg-toggled:after{width:100%}
+.fg-line:after{position:absolute;z-index:3;bottom:0;left:0;height:2px;width:0;content:"";
+    /*		:after 选择器在被选元素的内容后面插入content内容。 此处指的是账号或密码 下的那条有动态效果的下滑线 */
+    transition:all;	/*全部样式 3秒 缓动 ：虽说是关键语句，但只写这句一般没什么效果，需要和其它语句配合使用*/
+    transition-duration:.3s;			/*过渡持续时间  */
+    -webkit-transition:all;	/*兼容Safari 和 Chrome浏览器 */
+    -webkit-transition-duration:.3s;	/*过渡持续时间  */
+    -o-transition:all;		/*兼容 Opera 浏览器*/
+    background:#29a176;}
+.fg-line.fg-toggled:after{width:100%}/*控制下滑线过渡动画 的动画长度 */
+
+#login-bt i{font-size:23px;color:#fff;}
+#login-bt{position:absolute;width:50px;height:50px;border-radius:50%; line-height:36px!important;/*“箭头”的高度值*/
+    right:-25px;		/*button控件的横向*/
+    top:50%;			/*父控件中所占的比例*/
+    margin-top:-25px;	/*子空间微调*/
+    background:#FF4F0F;}
 
 input[type=checkbox].checkbix:checked+label>span:before{box-sizing: content-box;}
