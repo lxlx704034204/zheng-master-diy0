@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="zh-cn">
 <head>
 	<meta charset="utf-8">
@@ -14,10 +14,14 @@
 </head>
 <body>
 <div id="login-window">
-	<div class="input-group m-b-20">	<!-- 	 "zmdi zmdi-account"：账户 图标	-->
-		<span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+	<div class="input-group m-b-20"><!--input-group让提示和补充显示在同一行 "m-b-20"为class选择器标签-->
+		<span class="input-group-addon"><i class="zmdi zmdi-account"></i></span><!--"input-group-addon"用作给控件首位add图标；"zmdi zmdi-account"：账户 图标-->
 		<div class="fg-line">
 			<input id="username" type="text" class="form-control" name="username" placeholder="帐号" required autofocus value="admin">
+            <!--                                向 .form-control 添加前缀或后缀元素的步骤如下：
+                                                    把前缀或后缀元素放在一个带有 class .input-group 的 <div> 中。
+                                                    接着，在相同的 <div> 内，在 class 为 .input-group-addon 的 <span> 内放置额外的内容(图标)。
+                                                    把该 <span> 放置在 <input> 元素的前面或者后面。   -->
 		</div>
 	</div>
 	<div class="input-group m-b-20">	<!-- 	 "zmdi zmdi-male"：	密码 图标	-->
@@ -27,20 +31,24 @@
 		</div>
 	</div>
 	<div class="clearfix">
+        <!--1.有时有多个栅格class，你也不免会碰到一些问题，例如，在某些阈值时，某些列可能会出现比别的列高的情况。为了克服这一问题，建议联合使用 .clearfix 和 响应式工具类。
+            2.通过为父元素添加 .clearfix 类可以很容易地清除浮动（float）。
+            3.建议为需要清除浮动的元素使用 .clearfix() mixin ，尽量不要直接添加 class="clearfix" 类
+        -->
 	</div>
-	<div class="checkbox">
+	<div class="checkbox"> <!--                      "checkbix"：轻量级Javript复选框动画插件Checkbix-->
 		<input id="rememberMe" type="checkbox" class="checkbix" data-text="自动登录" name="rememberMe">
 	</div>	<!-- 	 					​        点击元素后出现波纹散开效果					     	登陆按钮中的"箭头"图标 -->
 	<a id="login-bt" href="javascript:;" class="waves-effect waves-button waves-float"><i class="zmdi zmdi-arrow-forward"></i></a>
 </div>
 <script src="plugins/jquery.1.12.4.min.js"></script>
 <script src="plugins/bootstrap-3.3.0/js/bootstrap.min.js"></script>
-<script src="plugins/waves-0.7.5/waves.min.js"></script>
-<script src="plugins/checkbix/js/checkbix.min.js"></script>
+<script src="plugins/waves-0.7.5/waves.min.js"></script>    <!--waves插件-->
+<script src="plugins/checkbix/js/checkbix.min.js"></script> <!--checkbix插件-->
 
 <script src="js/login.js"></script>
 <script type="text/javascript">
-    Checkbix.init();
+    Checkbix.init();                                        <!--checkbix插件 入口-->
 </script>
 </body>
 </html>
